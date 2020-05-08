@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     UIButton *successbutton = [UIButton buttonWithType:UIButtonTypeCustom];
     successbutton.frame = CGRectMake(50, 100, 120, 50);
     [successbutton setTitle:@"成功" forState:UIControlStateNormal];

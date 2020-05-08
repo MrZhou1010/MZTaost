@@ -75,10 +75,13 @@
 
 #pragma mark - 展示提示框
 - (void)showAlertMessage:(NSString *)message image:(UIImage *)image {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isShowTopAlert"]) {
+        return;
+    }
     self.alertImgView.image = image;
     self.alertLbl.text = message;
     if (@available(iOS 13.0, *)) {
-        UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
+        UIWindow *window = [UIApplication sharedApplication].windows.lastObject;
         [window addSubview:self];
     } else {
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
