@@ -25,7 +25,6 @@
     [successbutton setBackgroundColor:[UIColor blueColor]];
     [successbutton addTarget:self action:@selector(showSuccessfulToast) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:successbutton];
-    
     UIButton *failbutton = [UIButton buttonWithType:UIButtonTypeCustom];
     failbutton.frame = CGRectMake(50, 200, 120, 50);
     [failbutton setTitle:@"失败" forState:UIControlStateNormal];
