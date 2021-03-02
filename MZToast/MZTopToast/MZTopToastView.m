@@ -33,7 +33,7 @@
     self.toastLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.toastImgView.frame) + 16.0, [self getStatusBarHeight] + (44.0 - 20.0) * 0.5, self.frame.size.width - CGRectGetMaxX(self.toastImgView.frame) - 32.0, 20.0)];
     self.toastLbl.textColor = [UIColor whiteColor];
     self.toastLbl.textAlignment = NSTextAlignmentLeft;
-    self.toastLbl.font = [UIFont systemFontOfSize:16.0];
+    self.toastLbl.font = [UIFont systemFontOfSize:16];
     self.toastLbl.numberOfLines = 1;
     [self addSubview:self.toastLbl];
 }
