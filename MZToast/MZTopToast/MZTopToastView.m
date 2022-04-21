@@ -10,8 +10,9 @@
 
 @interface MZTopToastView ()
 
-@property (nonatomic, strong) UIImageView *toastImgView;
-@property (nonatomic, strong) UILabel *toastLbl;
+@property (nonatomic, strong) UIImageView *toastImageView;
+
+@property (nonatomic, strong) UILabel *toastLabel;
 
 @end
 
@@ -22,20 +23,20 @@
         self.frame = CGRectMake(0, -[self getStatusNavBarHeight], [UIScreen mainScreen].bounds.size.width, [self getStatusNavBarHeight]);
         self.backgroundColor = [UIColor greenColor];
         self.toastShowTime = 2.0;
-        [self setupSubview];
+        [self setupViews];
     }
     return self;
 }
 
-- (void)setupSubview {
-    self.toastImgView = [[UIImageView alloc] initWithFrame:CGRectMake(16.0, [self getStatusBarHeight] + (44.0 - 20.0) * 0.5, 20.0, 20.0)];
-    [self addSubview:self.toastImgView];
-    self.toastLbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.toastImgView.frame) + 16.0, [self getStatusBarHeight] + (44.0 - 20.0) * 0.5, self.frame.size.width - CGRectGetMaxX(self.toastImgView.frame) - 32.0, 20.0)];
-    self.toastLbl.textColor = [UIColor whiteColor];
-    self.toastLbl.textAlignment = NSTextAlignmentLeft;
-    self.toastLbl.font = [UIFont systemFontOfSize:16];
-    self.toastLbl.numberOfLines = 1;
-    [self addSubview:self.toastLbl];
+- (void)setupViews {
+    self.toastImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16.0, [self getStatusBarHeight] + (44.0 - 20.0) * 0.5, 20.0, 20.0)];
+    [self addSubview:self.toastImageView];
+    self.toastLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.toastImageView.frame) + 16.0, [self getStatusBarHeight] + (44.0 - 20.0) * 0.5, self.frame.size.width - CGRectGetMaxX(self.toastImageView.frame) - 32.0, 20.0)];
+    self.toastLabel.textColor = [UIColor whiteColor];
+    self.toastLabel.textAlignment = NSTextAlignmentLeft;
+    self.toastLabel.font = [UIFont systemFontOfSize:16];
+    self.toastLabel.numberOfLines = 1;
+    [self addSubview:self.toastLabel];
 }
 
 - (void)setToastBackgroundColor:(UIColor *)toastBackgroundColor {
@@ -78,8 +79,8 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isShowTopToast"]) {
         return;
     }
-    self.toastImgView.image = image;
-    self.toastLbl.text = message;
+    self.toastImageView.image = image;
+    self.toastLabel.text = message;
     if (@available(iOS 13.0, *)) {
         UIWindow *window = [UIApplication sharedApplication].windows.lastObject;
         [window addSubview:self];
